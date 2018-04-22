@@ -1,0 +1,141 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.guod</groupId>
+	<artifactId>open-security</artifactId>
+	<version>${revision}</version>
+	<packaging>pom</packaging>
+	<description>父项目</description>
+	<!-- 项目模块 -->
+	<modules>
+		<module>open-security-core</module>
+		<module>open-security-app</module>
+		<module>open-security-browser</module>
+		<module>open-security-demo</module>
+	</modules>
+	<!-- 项目版本号 -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<spring-io.version>Brussels-SR4</spring-io.version>
+		<spring-boot.version>1.5.9.RELEASE</spring-boot.version>
+		<spring-cloud.version>Dalston.SR2</spring-cloud.version>
+		<revision>1.0-SNAPSHOT</revision>
+	</properties>
+	<!--公共依赖 -->
+	<dependencies>
+		<!--Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<!-- Apache工具包 -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+		</dependency>
+		<!--测试依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- 项目热拔插 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
+	<!-- 统一版本管理 -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- IO统一版本管理 -->
+			<dependency>
+				<groupId>io.spring.platform</groupId>
+				<artifactId>platform-bom</artifactId>
+				<version>${spring-io.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- cloud统一版本管理 -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- boot统一版本管理 -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-parent</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- core统一版本管理 -->
+			<dependency>
+				<groupId>com.github.guod</groupId>
+				<artifactId>open-security-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- app统一版本管理 -->
+			<dependency>
+				<groupId>com.github.guod</groupId>
+				<artifactId>open-security-app</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- browser统一版本管理 -->
+			<dependency>
+				<groupId>com.github.guod</groupId>
+				<artifactId>open-security-browser</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- demo统一版本管理 -->
+			<dependency>
+				<groupId>com.github.guod</groupId>
+				<artifactId>open-security-demo</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- spring boot的maven插件 -->
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring-boot.version}</version>
+				</plugin>
+				<!-- 编译级别 -->
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<target>${java.version}</target>
+						<source>${java.version}</source>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<!-- install的时候跳过单元测试 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
