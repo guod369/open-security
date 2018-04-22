@@ -3,9 +3,9 @@
  */
 package com.github.guod.domain.vo;
 
-import javax.validation.constraints.NotNull;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * project - 权限管理框架

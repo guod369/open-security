@@ -1,20 +1,7 @@
 /**
  *
  */
-package com.github.guod.web;
-
-import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+package com.github.guod.web.controller;
 
 import com.github.guod.dao.GirlDaoI;
 import com.github.guod.domain.entity.GirlEntity;
@@ -22,11 +9,15 @@ import com.github.guod.domain.vo.GirlVO;
 import com.github.guod.domain.vo.Result;
 import com.github.guod.service.GirlServiceI;
 import com.github.guod.util.ResultUtils;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * project - 权限管理框架

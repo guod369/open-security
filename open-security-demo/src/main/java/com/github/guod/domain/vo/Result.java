@@ -1,5 +1,8 @@
 package com.github.guod.domain.vo;
 
+/**
+ * @author guod
+ */
 public class Result<T> {
 
 	/**
