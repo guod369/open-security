@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
  */
 @Component
 public class TackConfiguration {
-    @Scheduled(fixedRate = 3000)
-    public void sysoutTack(){
-        System.out.println("开始定时任务"+ LocalDateTime.now());
+    @Scheduled(cron = "0 0 0/1 * * ?")
+    public void sysoutTack() {
+        System.out.println("每小时执行一次定时任务：" + LocalDateTime.now());
     }
 }

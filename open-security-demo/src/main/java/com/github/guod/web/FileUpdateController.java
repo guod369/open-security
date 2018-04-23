@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
@@ -25,6 +26,7 @@ import java.util.UUID;
  * ========================
  */
 @RestController
+@RequestMapping(value = "/file")
 public class FileUpdateController {
     /**
      * 提取上传方法为公共方法
@@ -40,6 +42,7 @@ public class FileUpdateController {
         String filename = UUID.randomUUID() + suffix;
         //服务器端保存的文件对象
         File serverFile = new File(uploadDir + filename);
+        InputStream inputStream = file.getInputStream();
         //将上传的文件写入到服务器端文件内
         file.transferTo(serverFile);
     }
@@ -47,7 +50,7 @@ public class FileUpdateController {
     /**
      * 功能：上传单个文件方法
      *
-     * @param file 前台上传的文件对象
+     * @param file 前台上传的文件对象（注解请求头信息：enctype=multipart/form-data）
      * @return
      */
     @PostMapping(value = "/upload")
@@ -71,7 +74,7 @@ public class FileUpdateController {
     }
 
     /**
-     * 功能：上传多个文件方法
+     * 功能：上传多个文件方法（注解请求头信息：enctype=multipart/form-data）
      *
      * @param request 请求对象
      * @param file    上传文件集合
@@ -113,6 +116,11 @@ public class FileUpdateController {
     public void downloadFile(HttpServletRequest request, HttpServletResponse response) throws IOException {
         File file = new File("F:\\aaa.jpg");
         OutputStream outputStream = response.getOutputStream();
+        // 进行文件下载的指定
+        response.setContentType("application/x-download");
+        response.setCharacterEncoding("utf-8");
+        response.setHeader("Content-Disposition", "attachment;filename=" + new String(("下载名称").getBytes("gbk"), "iso8859-1") + ".xls");
+        // outputStream写入到输出流
         outputStream.write(FileCopyUtils.copyToByteArray(file));
         outputStream.flush();
         outputStream.close();

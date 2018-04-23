@@ -3,17 +3,20 @@
  */
 package com.github.guod.web;
 
-import org.codehaus.jackson.map.annotate.JsonView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.github.guod.domain.entity.UserEntity;
 import com.github.guod.domain.vo.Result;
 import com.github.guod.service.UserServiceI;
 import com.github.guod.util.ResultUtils;
+import org.codehaus.jackson.map.annotate.JsonView;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * project - 权限管理框架
@@ -29,6 +32,21 @@ import com.github.guod.util.ResultUtils;
 public class UserController {
 	@Autowired
 	private UserServiceI userServiceI;
+
+	@GetMapping(value = "/getCurrentUser")
+	public Object getCurrentUser(){
+		return SecurityContextHolder.getContext().getAuthentication();
+	}
+
+	@GetMapping(value = "/getMe")
+	public Object getMe(Authentication authentication){
+		return authentication;
+	}
+
+	@GetMapping(value = "/getUser")
+	public Object getUser(@AuthenticationPrincipal UserDetails user){
+		return user;
+	}
 
 	@GetMapping(value = "/query")
 	@JsonView(UserEntity.UserSimpleView.class)
