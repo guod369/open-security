@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.github.guod.filter;
+package com.github.guod.validate.code.filter;
 
 import java.io.IOException;
 import java.util.Date;
@@ -13,8 +13,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import org.springframework.stereotype.Component;
-
 /**
  * project -
  *
@@ -24,26 +22,25 @@ import org.springframework.stereotype.Component;
  * @version 3.0
  * @Description 功能模块：
  */
-@Component
-public class TimeFilter implements Filter {
+public class TimeFilterBean implements Filter {
 
 	@Override
 	public void destroy() {
-		System.out.println("TimeFilter filter destroy");
+		System.out.println("TimeFilterBean filter destroy");
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		System.out.println("TimeFilter filter start");
+		System.out.println("TimeFilterBean filter start");
 		long start = new Date().getTime();
 		chain.doFilter(request, response);
 		System.out.println(new Date().getTime() - start);
-		System.out.println("TimeFilter filter finish");
+		System.out.println("TimeFilterBean filter finish");
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		System.out.println("TimeFilter filter init");
+		System.out.println("TimeFilterBean filter init");
 	}
 
 }

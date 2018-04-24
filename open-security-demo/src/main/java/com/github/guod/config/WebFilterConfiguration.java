@@ -3,7 +3,7 @@
  */
 package com.github.guod.config;
 
-import com.github.guod.filter.TimeFilterBean;
+import com.github.guod.validate.code.filter.TimeFilterBean;
 import com.github.guod.interceptor.TimeInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;

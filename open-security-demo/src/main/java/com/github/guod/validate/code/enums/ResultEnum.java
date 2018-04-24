@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.github.guod.enums;
+package com.github.guod.validate.code.enums;
 
 /**
  * project - ETC发票系统

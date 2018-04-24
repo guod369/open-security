@@ -3,12 +3,12 @@
  */
 package com.github.guod.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -22,13 +22,12 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "tb_girl")
-public class GirlEntity extends BaseEntity {
+public class GirlEntity extends BaseEntity implements Serializable{
     private String name;
     @JsonIgnore
     private Integer age;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String cupSize;
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime birthday;
 
     public String getName() {

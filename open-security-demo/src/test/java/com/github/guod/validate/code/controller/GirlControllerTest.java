@@ -1,6 +1,4 @@
-package com.github.guod.controller;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+package com.github.guod.validate.code.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 /**
  * Created by 廖师兄 2017-02-14 23:27

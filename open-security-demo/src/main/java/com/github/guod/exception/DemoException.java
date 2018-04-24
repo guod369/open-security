@@ -3,7 +3,7 @@
  */
 package com.github.guod.exception;
 
-import com.github.guod.enums.ResultEnum;
+import com.github.guod.validate.code.enums.ResultEnum;
 
 /**
  * project - ETC发票系统

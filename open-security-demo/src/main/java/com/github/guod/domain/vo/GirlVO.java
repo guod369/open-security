@@ -4,8 +4,10 @@
 package com.github.guod.domain.vo;
 
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 /**
  * project - 权限管理框架
@@ -39,6 +41,9 @@ public class GirlVO {
 	private Integer age;
 	@ApiModelProperty(value = "大小", hidden = false)
 	private String cupSize;
+	@ApiModelProperty(value = "出生年月")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime birthday;
 
 	public Integer getAge() {
 		return age;
@@ -72,4 +77,11 @@ public class GirlVO {
 		this.name = name;
 	}
 
+	public LocalDateTime getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(LocalDateTime birthday) {
+		this.birthday = birthday;
+	}
 }

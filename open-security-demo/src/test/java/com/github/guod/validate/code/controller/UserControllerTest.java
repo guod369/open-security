@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.github.guod.controller;
+package com.github.guod.validate.code.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -3,15 +3,14 @@
  */
 package com.github.guod.domain.entity;
 
-import java.time.LocalDateTime;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
+import java.time.LocalDateTime;
 
 /**
  * project - 权限管理框架
@@ -32,7 +31,7 @@ public class BaseEntity {
 	/**
 	 * 创建时间
 	 */
-	private LocalDateTime createTime;
+	private LocalDateTime createTime=LocalDateTime.now();
 	/**
 	 * 修改时间
 	 */
@@ -41,7 +40,7 @@ public class BaseEntity {
 	 * 是否删除 1、删除 0 、正常
 	 */
 	@Type(type = "true_false")
-	private Boolean isDeleate;
+	private Boolean isDeleate=false;
 
 	public String getId() {
 		return id;

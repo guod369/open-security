@@ -1,4 +1,4 @@
-package com.github.guod.controller;
+package com.github.guod.validate.code.controller;
 
 import com.github.guod.SecurityProperties;
 import com.github.guod.vo.SimpleResponse;

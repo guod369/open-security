@@ -21,6 +21,8 @@ public class UserVO {
 
 	private String school;
 
+	private String birthday;
+
 	public String getId() {
 		return id;
 	}
@@ -53,4 +55,11 @@ public class UserVO {
 		this.school = school;
 	}
 
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
 }

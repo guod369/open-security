@@ -3,15 +3,14 @@
  */
 package com.github.guod.config;
 
-import java.util.List;
-
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.support.config.FastJsonConfig;
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.alibaba.fastjson.support.config.FastJsonConfig;
-import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import java.util.List;
 
 /**
  * project - ETC发票系统
@@ -36,7 +35,10 @@ public class FastJsonConfiguration extends WebMvcConfigurerAdapter {
 		// 创建配置类
 		FastJsonConfig fastJsonConfig = new FastJsonConfig();
 		// 修改配置返回内容的过滤
-		fastJsonConfig.setSerializerFeatures(SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.WriteMapNullValue, SerializerFeature.WriteNullStringAsEmpty);
+		fastJsonConfig.setSerializerFeatures(
+				SerializerFeature.DisableCircularReferenceDetect,
+				SerializerFeature.WriteMapNullValue,
+				SerializerFeature.WriteNullStringAsEmpty);
 		fastConverter.setFastJsonConfig(fastJsonConfig);
 		// 将fastjson添加到视图消息转换器列表内
 		converters.add(fastConverter);

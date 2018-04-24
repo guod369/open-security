@@ -3,6 +3,10 @@
  */
 package com.github.guod.service;
 
+import com.github.guod.domain.entity.GirlEntity;
+
+import java.util.List;
+
 /**
  * project - ETC发票系统
  *
@@ -15,5 +19,7 @@ package com.github.guod.service;
 public interface GirlServiceI {
 
 	void getAge(String id) throws Exception;
+
+	List<GirlEntity> findAllGirl();
 
 }

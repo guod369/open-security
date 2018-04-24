@@ -1,4 +1,4 @@
-package com.github.guod.validate.code;
+package com.github.guod.validate.code.image;
 
 import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
@@ -42,6 +42,10 @@ public class ImageCode {
         this.image = image;
         this.code = code;
         this.expireTime = LocalDateTime.now().plusSeconds(expireIn);
+    }
+
+    public boolean isExpried() {
+        return LocalDateTime.now().isAfter(expireTime);
     }
 
     public BufferedImage getImage() {
