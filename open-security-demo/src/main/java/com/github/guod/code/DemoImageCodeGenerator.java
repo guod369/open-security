@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * @version 3.0
  * @date 日期:2018/4/24 时间:19:09
  * @JDK 1.8
- * @Description 功能模块：
+ * @Description 功能模块：此处可以覆盖原来的图形验证码代码
  */
 @Component(value = "imageCodeGenerator")
 public class DemoImageCodeGenerator implements ValidateCodeGenerator {
