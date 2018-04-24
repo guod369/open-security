@@ -1,6 +1,6 @@
 package com.github.guod.validate;
 
-import com.github.guod.ImageCodeProperties;
+import com.github.guod.properties.ImageCodeProperties;
 
 /**
  * project - ETC发票系统

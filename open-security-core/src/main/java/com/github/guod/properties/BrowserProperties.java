@@ -1,4 +1,4 @@
-package com.github.guod;
+package com.github.guod.properties;
 
 import com.github.guod.validate.code.enums.LoginType;
 

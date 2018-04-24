@@ -1,7 +1,7 @@
 package com.github.guod.authentication;
 
 import com.alibaba.fastjson.JSON;
-import com.github.guod.SecurityProperties;
+import com.github.guod.properties.SecurityProperties;
 import com.github.guod.validate.code.enums.LoginType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

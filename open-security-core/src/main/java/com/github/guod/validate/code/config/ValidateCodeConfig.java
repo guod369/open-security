@@ -1,6 +1,6 @@
 package com.github.guod.validate.code.config;
 
-import com.github.guod.SecurityProperties;
+import com.github.guod.properties.SecurityProperties;
 import com.github.guod.validate.code.service.ValidateCodeGenerator;
 import com.github.guod.validate.code.service.impl.ValidateCodeGeneratorImpl;
 import org.springframework.beans.factory.annotation.Autowired;

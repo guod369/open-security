@@ -1,6 +1,6 @@
 package com.github.guod.validate.code.service.impl;
 
-import com.github.guod.SecurityProperties;
+import com.github.guod.properties.SecurityProperties;
 import com.github.guod.validate.code.image.ImageCode;
 import com.github.guod.validate.code.service.ValidateCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;

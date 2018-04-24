@@ -1,6 +1,6 @@
 package com.github.guod.validate.code.filter;
 
-import com.github.guod.SecurityProperties;
+import com.github.guod.properties.SecurityProperties;
 import com.github.guod.validate.code.controller.ValidateCodeController;
 import com.github.guod.validate.code.exception.ValidateCodeException;
 import com.github.guod.validate.code.image.ImageCode;

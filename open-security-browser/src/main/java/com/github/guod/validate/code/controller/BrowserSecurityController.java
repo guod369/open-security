@@ -1,6 +1,6 @@
 package com.github.guod.validate.code.controller;
 
-import com.github.guod.SecurityProperties;
+import com.github.guod.properties.SecurityProperties;
 import com.github.guod.vo.SimpleResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

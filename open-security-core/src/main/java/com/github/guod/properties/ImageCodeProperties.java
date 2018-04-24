@@ -1,4 +1,4 @@
-package com.github.guod;
+package com.github.guod.properties;
 
 /**
  * project - ETC发票系统

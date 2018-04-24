@@ -2,6 +2,7 @@ package com.github.guod;
 
 import com.github.guod.authentication.MeAuthenticationFailHandler;
 import com.github.guod.authentication.MeAuthenticationSuccessHandler;
+import com.github.guod.properties.SecurityProperties;
 import com.github.guod.validate.code.filter.ValidateCodeFilter;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
