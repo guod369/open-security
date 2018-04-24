@@ -2,7 +2,6 @@ package com.github.guod.code;
 
 import com.github.guod.validate.code.image.ImageCode;
 import com.github.guod.validate.code.service.ValidateCodeGenerator;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * @JDK 1.8
  * @Description 功能模块：此处可以覆盖原来的图形验证码代码
  */
-@Component(value = "imageCodeGenerator")
+//@Component(value = "imageCodeGenerator")
 public class DemoImageCodeGenerator implements ValidateCodeGenerator {
     @Override
     public ImageCode generator(HttpServletRequest request) {
