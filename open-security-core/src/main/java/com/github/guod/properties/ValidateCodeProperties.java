@@ -1,6 +1,4 @@
-package com.github.guod.validate;
-
-import com.github.guod.properties.ImageCodeProperties;
+package com.github.guod.properties;
 
 /**
  * project - ETC发票系统
@@ -13,6 +11,8 @@ import com.github.guod.properties.ImageCodeProperties;
  */
 public class ValidateCodeProperties {
     private ImageCodeProperties image = new ImageCodeProperties();
+    private SmsCodeProperties sms = new SmsCodeProperties();
+
 
     public ImageCodeProperties getImage() {
         return image;
@@ -20,5 +20,13 @@ public class ValidateCodeProperties {
 
     public void setImage(ImageCodeProperties image) {
         this.image = image;
+    }
+
+    public SmsCodeProperties getSms() {
+        return sms;
+    }
+
+    public void setSms(SmsCodeProperties sms) {
+        this.sms = sms;
     }
 }

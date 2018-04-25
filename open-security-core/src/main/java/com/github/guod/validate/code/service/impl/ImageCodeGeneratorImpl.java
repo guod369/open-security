@@ -20,7 +20,7 @@ import java.util.Random;
  * @JDK 1.8
  * @Description 功能模块：
  */
-public class ValidateCodeGeneratorImpl implements ValidateCodeGenerator{
+public class ImageCodeGeneratorImpl implements ValidateCodeGenerator {
     @Autowired
     private SecurityProperties securityProperties;
 
@@ -34,8 +34,8 @@ public class ValidateCodeGeneratorImpl implements ValidateCodeGenerator{
 
     @Override
     public ImageCode generator(HttpServletRequest request) {
-        int width = ServletRequestUtils.getIntParameter(request,"width",securityProperties.getCode().getImage().getWidth());
-        int height = ServletRequestUtils.getIntParameter(request,"height",securityProperties.getCode().getImage().getHeight());
+        int width = ServletRequestUtils.getIntParameter(request, "width", securityProperties.getCode().getImage().getWidth());
+        int height = ServletRequestUtils.getIntParameter(request, "height", securityProperties.getCode().getImage().getHeight());
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
         Graphics g = image.getGraphics();

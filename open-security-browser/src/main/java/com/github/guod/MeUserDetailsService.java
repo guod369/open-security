@@ -28,7 +28,14 @@ public class MeUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        logger.info("登录用户名：[{}],用户登录密码[{}]", username, passwordEncoder.encode("123456"));
-        return new User(username, passwordEncoder.encode("123456"), AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+        /**
+         * 每次加密后的结果是不一样的，混入的有盐
+         */
+        String password = passwordEncoder.encode("123456");
+        logger.info("登录用户名：[{}],用户登录密码[{}]", username, password);
+        /**
+         * return new User(username, "123456", AuthorityUtils.commaSeparatedStringToAuthorityList("admin"))
+         */
+        return new User("guod", password, true, true, true, true, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
     }
 }

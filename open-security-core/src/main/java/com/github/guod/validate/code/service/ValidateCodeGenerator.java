@@ -1,6 +1,6 @@
 package com.github.guod.validate.code.service;
 
-import com.github.guod.validate.code.image.ImageCode;
+import com.github.guod.validate.code.image.ValidateCode;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,5 +14,5 @@ import javax.servlet.http.HttpServletRequest;
  * @Description 功能模块：
  */
 public interface ValidateCodeGenerator {
-    ImageCode generator(HttpServletRequest request);
+    ValidateCode generator(HttpServletRequest request);
 }

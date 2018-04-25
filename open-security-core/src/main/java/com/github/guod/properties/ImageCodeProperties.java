@@ -9,13 +9,14 @@ package com.github.guod.properties;
  * @JDK 1.8
  * @Description 功能模块：
  */
-public class ImageCodeProperties {
+public class ImageCodeProperties extends SmsCodeProperties {
+    public ImageCodeProperties() {
+        setLength(4);
+    }
+
     private int width = 63;
     private int height = 23;
-    private int length = 4;
-    private int expireIn = 60;
 
-    private String urls;
 
     public int getWidth() {
         return width;
@@ -33,27 +34,4 @@ public class ImageCodeProperties {
         this.height = height;
     }
 
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public int getExpireIn() {
-        return expireIn;
-    }
-
-    public void setExpireIn(int expireIn) {
-        this.expireIn = expireIn;
-    }
-
-    public String getUrls() {
-        return urls;
-    }
-
-    public void setUrls(String urls) {
-        this.urls = urls;
-    }
 }

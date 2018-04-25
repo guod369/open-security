@@ -2,6 +2,9 @@ package com.github.guod;
 
 import com.github.guod.authentication.MeAuthenticationFailHandler;
 import com.github.guod.authentication.MeAuthenticationSuccessHandler;
+import com.github.guod.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.github.guod.mobile.SmsCodeFilter;
+import com.github.guod.properties.SecurityConstants;
 import com.github.guod.properties.SecurityProperties;
 import com.github.guod.validate.code.filter.ValidateCodeFilter;
 import org.apache.tomcat.jdbc.pool.DataSource;
@@ -34,6 +37,8 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     private MeAuthenticationSuccessHandler meAuthenticationSuccessHandler;
     @Autowired
     private MeAuthenticationFailHandler meAuthenticationFailHandler;
+    @Autowired
+    private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
     /**
      * 注入数据源
      */
@@ -48,6 +53,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 功能：密码加密和解密配置
+     *
      * @return
      */
     @Bean
@@ -57,10 +63,11 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 功能：記住我
+     *
      * @return
      */
     @Bean
-    public PersistentTokenRepository persistentTokenRepository(){
+    public PersistentTokenRepository persistentTokenRepository() {
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
         tokenRepository.setDataSource(dataSource);
         tokenRepository.setCreateTableOnStartup(false);
@@ -77,11 +84,16 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
         validateCodeFilter.setSecurityProperties(securityProperties);
         validateCodeFilter.afterPropertiesSet();
 
-        http
+        SmsCodeFilter smsCodeFilter = new SmsCodeFilter();
+        smsCodeFilter.setAuthenticationFailureHandler(meAuthenticationFailHandler);
+        smsCodeFilter.setSecurityProperties(securityProperties);
+        smsCodeFilter.afterPropertiesSet();
+
+        http.addFilterBefore(smsCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
                 .loginPage("/requestAuthentication")
-                .loginProcessingUrl("/authentication/form")
+                .loginProcessingUrl(SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_FORM)
                 .successHandler(meAuthenticationSuccessHandler)
                 .failureHandler(meAuthenticationFailHandler)
                 .and().rememberMe()
@@ -93,10 +105,11 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/requestAuthentication",
                         securityProperties.getBrowser().getLoginPage(),
-                        "/code/image").permitAll()
+                        "/code/*").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
-                .csrf().disable();
+                .csrf().disable()
+                .apply(smsCodeAuthenticationSecurityConfig);
     }
 }

@@ -1,8 +1,10 @@
 package com.github.guod.validate.code.config;
 
 import com.github.guod.properties.SecurityProperties;
+import com.github.guod.validate.code.service.SmsCodeSender;
 import com.github.guod.validate.code.service.ValidateCodeGenerator;
-import com.github.guod.validate.code.service.impl.ValidateCodeGeneratorImpl;
+import com.github.guod.validate.code.service.impl.SmsCodeSenderImpl;
+import com.github.guod.validate.code.service.impl.ImageCodeGeneratorImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -24,10 +26,17 @@ public class ValidateCodeConfig {
 
     @Bean
     @ConditionalOnMissingBean(name = "imageCodeGenerator")
-    public ValidateCodeGenerator imageCodeGenerator(){
-        ValidateCodeGeneratorImpl validateCodeGenerator = new ValidateCodeGeneratorImpl();
+    public ValidateCodeGenerator imageCodeGenerator() {
+        ImageCodeGeneratorImpl validateCodeGenerator = new ImageCodeGeneratorImpl();
         validateCodeGenerator.setSecurityProperties(securityProperties);
         return validateCodeGenerator;
+    }
+
+
+    @Bean
+    @ConditionalOnMissingBean(SmsCodeSender.class)
+    public SmsCodeSender smsCodeSender() {
+        return new SmsCodeSenderImpl();
     }
 
 }

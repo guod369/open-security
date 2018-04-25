@@ -5,6 +5,7 @@ package com.github.guod.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -22,13 +23,23 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "tb_girl")
-public class GirlEntity extends BaseEntity implements Serializable{
+public class GirlEntity extends BaseEntity implements Serializable {
     private String name;
     @JsonIgnore
     private Integer age;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String cupSize;
     private LocalDateTime birthday;
+    /**
+     * 映射在数据库是字符串类型,为首字符Y或者N
+     */
+    @Type(type = "yes_no")
+    private Boolean marriage = false;
+    /**
+     * 映射在数据库中为0(false)或1(true)的Integer类型
+     */
+    @Type(type = "numeric_boolean")
+    private Boolean adult = false;
 
     public String getName() {
         return name;
@@ -60,5 +71,21 @@ public class GirlEntity extends BaseEntity implements Serializable{
 
     public void setBirthday(LocalDateTime birthday) {
         this.birthday = birthday;
+    }
+
+    public Boolean getMarriage() {
+        return marriage;
+    }
+
+    public void setMarriage(Boolean marriage) {
+        this.marriage = marriage;
+    }
+
+    public Boolean getAdult() {
+        return adult;
+    }
+
+    public void setAdult(Boolean adult) {
+        this.adult = adult;
     }
 }

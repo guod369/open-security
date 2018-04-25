@@ -1,6 +1,5 @@
 package com.github.guod.properties;
 
-import com.github.guod.validate.ValidateCodeProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
